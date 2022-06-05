@@ -35,7 +35,7 @@ const Sidebar = ({mail,setMail}) => {
     }
     let removeUser = localStorage.key(0)
     let removeToken = localStorage.getItem(removeUser)
-    const res=await fetch("http://localhost:8080/logout", {
+    const res=await fetch(process.env.REACT_APP_API+"/logout", {
         method:"GET", 
         headers:{
             "Content-Type":"application/json",
