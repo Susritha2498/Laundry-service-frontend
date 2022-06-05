@@ -1,0 +1,1 @@
+https://laundry-service-frontend.pages.dev/
