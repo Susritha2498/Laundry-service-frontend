@@ -46,8 +46,11 @@ const Summary = ({Items,total,proceed,setProceed}) => {
         alert("Successfully added the post")
         setorderSuccess(true)
       }
+      
       else{
-        alert("Cannot add the post")
+        if (res.status===401) alert(res.status + " : Please login to add the order")
+        else if (res.status===403) alert(res.status + " : Invalid user")
+        else alert(res.status + " : Internet server error")
         setorderSuccess(false)
       }
   }

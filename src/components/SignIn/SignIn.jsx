@@ -3,7 +3,7 @@ import { Icon } from 'react-icons-kit'
 import {eyeOff} from 'react-icons-kit/feather/eyeOff'
 import {eye} from 'react-icons-kit/feather/eye'
 import { Link ,useNavigate} from 'react-router-dom'
-import {Details, Sidebar, Navbar, PastOrders, CreateOrder, Summary} from "../index"
+import {Details,Navbar} from "../index"
 import axios from "axios"
 import "./SignIn.css"
 
@@ -26,6 +26,11 @@ const SignIn = () => {
         setLogin(true)
         pastorders('/orders')
         }).catch((err)=>{
+          console.log(err)
+          if(err.response.status===422) alert(err.response.status +" : Please fill out all the fields")
+          else if (err.response.status===404) alert(err.response.status + " : Email is not registered")
+          else if (err.response.status===401) alert(err.response.status + " : Invalid password. Try again.")
+          else alert(err.response.status +" : Internal sever error")
           setLogin(false)
         })
  }

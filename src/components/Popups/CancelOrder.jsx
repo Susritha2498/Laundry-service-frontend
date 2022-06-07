@@ -1,10 +1,10 @@
 import React from 'react'
 import './CancelOrder.css'
-import {useNavigate } from 'react-router-dom'
+// import {useNavigate } from 'react-router-dom'
 import { images } from '../../constants/index'
 
 const CancelOrder = ({id,OrderNum,ordercancel,setorderCancel,view,setView,cancel,setCancel,getOrders}) => {
-    const gobacktoOrders = useNavigate()
+    // const gobacktoOrders = useNavigate()
     const handleClose = ()=>{
       setView(false)
       setCancel(false)
@@ -29,11 +29,13 @@ const CancelOrder = ({id,OrderNum,ordercancel,setorderCancel,view,setView,cancel
             setorderCancel(false)
             getOrders()
         }
-        else{
-            alert("Failed to delete the post")
-            setView(false)
-            setCancel(false)
-            setorderCancel(false)
+      else{
+        if (resp.status===404) alert(resp.status + " : There is no post with given id")
+        else if (resp.status===403) alert(resp.status + " : Do not have permission to delete this order")
+        else alert(resp.status + " : Internet server error")
+        setView(false)
+        setCancel(false)
+        setorderCancel(false)
         }
 
     }

@@ -30,13 +30,14 @@ const SignUp = () => {
           name,mail,phone,state,district,address,pincode,password
         })
       })
-      console.log(response.status)
       if(response.status===200){
         alert("Successfully registered")
         homepage('/')
       }
       else{
-        alert("Registration failed")
+        if(response.status===300) alert(response.status + " : Email or Phone is already registered")
+        else if(response.status===422) alert(response.status +" : Please fill out all the fields")
+        else alert(response.status +" : Internal sever error")
       }
   
   }

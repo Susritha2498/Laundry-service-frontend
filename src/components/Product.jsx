@@ -1,4 +1,4 @@
-import React,{useState, useEffect, useMemo} from 'react'
+import React,{useState} from 'react'
 import { images } from '../constants/index'
 const imglist=[images.shirts,images.tshirts,images.trousers,images.jeans,images.boxers,images.joggers,images.others]
 
